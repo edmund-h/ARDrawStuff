@@ -284,7 +284,6 @@ class ViewController: UIViewController, ARSCNViewDelegate {
 		textManager.showMessage("SURFACE DETECTED")
 		if virtualObjectManager.pointNodes.isEmpty {
 			textManager.scheduleMessage("TAP + TO PLACE AN OBJECT", inSeconds: 7.5, messageType: .contentPlacement)
-            print ("tap to place message sent!")
 		}
 	}
 		
@@ -418,7 +417,6 @@ class ViewController: UIViewController, ARSCNViewDelegate {
                 return
             }
             self.lastObservation = newObservation
-            
             // check the confidence level before updating the UI
             guard newObservation.confidence >= 0.3 else {
                 // hide the pen when we lose accuracy so the user knows something is wrong

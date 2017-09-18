@@ -5,3 +5,11 @@ This app was created initially using Apple's ARKitExample. Those files were then
 https://www.toptal.com/swift/ios-arkit-tutorial-drawing-in-air-with-fingers
 
 I am making further modifications to the app in order to gain an understanding of working with graphics libraries and ARKit.
+
+HOW TO USE:
+
+1) Acquire tracking on the drawing surface by holding the phone steady at a level angle to the drawing surface. This has occurred when a yellow box appears.
+2) Place your fingers on the drawing surface and inside the yellow tracking box as if holding a pen. This will be your virtual pen tip.
+3) Acquire tracking on your virtual pen tip: With your non drawing hand, tap the point on the screen where your fingers meet to set the pen tip. A red dot will appear when this is successful.
+5) Now select the draw button (dark grey when selected). Moving your fingers will cause the virtual pen tip to follow your fingers and draw a line of brown squares along the drawing surface. Take care to keep your fingers as near as possible to the yellow box. You can move the phone but try to keep it at the same level and height relative to the drawing surface.
+6) When you are finished drawing, you can press the 3D button. Raising your fingers above the drawing plane will cause the squares drawn along the drawing plane to increase in height. 
