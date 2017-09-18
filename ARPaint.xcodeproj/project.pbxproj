@@ -22,6 +22,7 @@
 		5D1D54E11F26435800DD9921 /* wood-diffuse.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 5D1D54DE1F26435800DD9921 /* wood-diffuse.jpg */; };
 		5D1D54E21F26435800DD9921 /* wood-specular.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 5D1D54DF1F26435800DD9921 /* wood-specular.jpg */; };
 		5D4C7E871F2BAFA30087471B /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 5D4C7E851F2BAF9C0087471B /* Main.storyboard */; };
+		884943F11F6FAE6500163B9F /* SavedObjectManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 884943F01F6FAE6500163B9F /* SavedObjectManager.swift */; };
 		C41366B91EB80DD400EC054A /* TextManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = C41366B81EB80DD400EC054A /* TextManager.swift */; };
 		C42A71BD1E9C0AF200944367 /* FocusSquare.swift in Sources */ = {isa = PBXBuildFile; fileRef = C42A71BC1E9C0AF200944367 /* FocusSquare.swift */; };
 		C46356671EF9CC500080C8D9 /* SceneExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = C46356661EF9CC480080C8D9 /* SceneExtensions.swift */; };
@@ -48,6 +49,7 @@
 		5D4C7E861F2BAF9C0087471B /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = ARPaint/Base.lproj/Main.storyboard; sourceTree = SOURCE_ROOT; };
 		5DB31FE11F2AEB0200069EC4 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		7497A16BF0220DFA28C77519 /* SampleCode.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = SampleCode.xcconfig; path = Configuration/SampleCode.xcconfig; sourceTree = "<group>"; };
+		884943F01F6FAE6500163B9F /* SavedObjectManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SavedObjectManager.swift; sourceTree = "<group>"; };
 		C41366B81EB80DD400EC054A /* TextManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextManager.swift; sourceTree = "<group>"; };
 		C42A71BC1E9C0AF200944367 /* FocusSquare.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FocusSquare.swift; sourceTree = "<group>"; };
 		C46356651EF9CB1A0080C8D9 /* VirtualObjectManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VirtualObjectManager.swift; sourceTree = "<group>"; };
@@ -162,6 +164,7 @@
 			children = (
 				5D1D54DB1F2641C300DD9921 /* PointNode.swift */,
 				C46356651EF9CB1A0080C8D9 /* VirtualObjectManager.swift */,
+				884943F01F6FAE6500163B9F /* SavedObjectManager.swift */,
 			);
 			path = "Virtual Objects";
 			sourceTree = "<group>";
@@ -251,6 +254,7 @@
 				392BB82C1EA19A7C00FBBAC8 /* Plane.swift in Sources */,
 				5D1D54DC1F26425C00DD9921 /* PointNode.swift in Sources */,
 				C46356671EF9CC500080C8D9 /* SceneExtensions.swift in Sources */,
+				884943F11F6FAE6500163B9F /* SavedObjectManager.swift in Sources */,
 				148832491EFC3E520043E0AB /* ARSCNView+HitTests.swift in Sources */,
 				148832411EFC3B250043E0AB /* FocusSquareSegment.swift in Sources */,
 				C42A71BD1E9C0AF200944367 /* FocusSquare.swift in Sources */,

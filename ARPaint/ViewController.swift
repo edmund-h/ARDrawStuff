@@ -45,11 +45,14 @@ class ViewController: UIViewController, ARSCNViewDelegate {
     @IBOutlet weak var messageLabel: UILabel!
     @IBOutlet weak var restartExperienceButton: UIButton!
     
+    //ed- buttons now visually set one another to off, fixing a misleading ui bug
     @IBOutlet weak var drawButton: UIButton!
     @IBAction func drawAction() {
         drawButton.isSelected = !drawButton.isSelected
         inDrawMode = drawButton.isSelected
+        // ed- added these two lines:
         in3DMode = false
+        threeDMagicButton.isSelected = in3DMode
     }
     
     @IBOutlet weak var threeDMagicButton: UIButton!
@@ -57,7 +60,8 @@ class ViewController: UIViewController, ARSCNViewDelegate {
         threeDMagicButton.isSelected = !threeDMagicButton.isSelected
         in3DMode = threeDMagicButton.isSelected
         inDrawMode = false
-        
+        // ed- added these two lines:
+        drawButton.isSelected = inDrawMode
         trackImageInitialOrigin = nil
     }
     
@@ -393,7 +397,7 @@ class ViewController: UIViewController, ARSCNViewDelegate {
         lastObservation = nil
         let tapLocation = recognizer.location(in: view)
         
-        // Set up the rect in the image in view coordinate space that we will track
+        // Set up the rect in the image in view coordinate space that we will track as pen tip
         let trackImageBoundingBoxOrigin = CGPoint(x: tapLocation.x - trackImageSize / 2, y: tapLocation.y - trackImageSize / 2)
         trackImageBoundingBox = CGRect(origin: trackImageBoundingBoxOrigin, size: CGSize(width: trackImageSize, height: trackImageSize))
         

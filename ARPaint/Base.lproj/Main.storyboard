@@ -1,10 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="13156.6" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="BV1-FR-VrT">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="13196" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="BV1-FR-VrT">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13137.5"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13173"/>
+        <capability name="Constraints with non-1.0 multipliers" minToolsVersion="5.1"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -12,7 +13,7 @@
         <!--View Controller-->
         <scene sceneID="tXr-a1-R10">
             <objects>
-                <viewController id="BV1-FR-VrT" customClass="ViewController" customModule="ARKitExample" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="BV1-FR-VrT" customClass="ViewController" customModule="ARPaint" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="RLh-bf-1c3">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
@@ -21,7 +22,7 @@
                                 <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                             </sceneKitView>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="FDz-qT-5Mj" userLabel="Draw Button">
-                                <rect key="frame" x="16" y="604" width="120" height="48"/>
+                                <rect key="frame" x="7" y="604" width="120" height="48"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="48" id="L76-M7-2Ss"/>
                                     <constraint firstAttribute="width" constant="120" id="q6S-Bh-mXP"/>
@@ -35,22 +36,6 @@
                                 <state key="highlighted" image="shutterPressed"/>
                                 <connections>
                                     <action selector="drawAction" destination="BV1-FR-VrT" eventType="touchUpInside" id="zb8-0r-w0o"/>
-                                </connections>
-                            </button>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Yf6-WU-CVx" userLabel="3D Button">
-                                <rect key="frame" x="166" y="604" width="120" height="48"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="48" id="dES-Xv-vf4"/>
-                                    <constraint firstAttribute="width" constant="120" id="tF1-4K-EQ2"/>
-                                </constraints>
-                                <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="18"/>
-                                <state key="normal" title=" 3D!" image="shutter">
-                                    <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                </state>
-                                <state key="selected" image="shutterPressed"/>
-                                <state key="highlighted" image="shutterPressed"/>
-                                <connections>
-                                    <action selector="threeDMagicAction:" destination="BV1-FR-VrT" eventType="touchUpInside" id="pmd-MP-Yuj"/>
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="SuF-Os-zmb" userLabel="Restart Experience Button Hit Area">
@@ -121,23 +106,67 @@
                                 </constraints>
                                 <blurEffect style="light"/>
                             </visualEffectView>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Yf6-WU-CVx" userLabel="3D Button">
+                                <rect key="frame" x="127" y="604" width="120" height="48"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="48" id="dES-Xv-vf4"/>
+                                    <constraint firstAttribute="width" constant="120" id="tF1-4K-EQ2"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="18"/>
+                                <state key="normal" title=" 3D!" image="shutter">
+                                    <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <state key="selected" image="shutterPressed"/>
+                                <state key="highlighted" image="shutterPressed"/>
+                                <connections>
+                                    <action selector="threeDMagicAction:" destination="BV1-FR-VrT" eventType="touchUpInside" id="pmd-MP-Yuj"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="wLb-Lk-NqB" userLabel="Draw Button">
+                                <rect key="frame" x="247" y="604" width="120" height="48"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="120" id="1Dx-pS-qi1"/>
+                                    <constraint firstAttribute="height" constant="48" id="STV-oV-SeI"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="18"/>
+                                <state key="normal" title=" Place" image="shutter">
+                                    <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                    <color key="titleShadowColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                </state>
+                                <state key="selected" image="shutterPressed"/>
+                                <state key="highlighted" image="shutterPressed"/>
+                                <connections>
+                                    <action selector="drawAction" destination="BV1-FR-VrT" eventType="touchUpInside" id="fo4-uU-n3s"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="SiG-YX-rZN">
+                                <rect key="frame" x="19" y="544" width="60" height="48"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <state key="normal" title="Save!"/>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
-                            <constraint firstItem="FDz-qT-5Mj" firstAttribute="leading" secondItem="GBj-4O-Whc" secondAttribute="leading" constant="16" id="05U-lG-lP4"/>
+                            <constraint firstItem="FDz-qT-5Mj" firstAttribute="leading" secondItem="GBj-4O-Whc" secondAttribute="leading" constant="7" id="05U-lG-lP4"/>
                             <constraint firstItem="SuF-Os-zmb" firstAttribute="trailing" secondItem="E6c-py-dvH" secondAttribute="trailing" id="35g-18-nn3"/>
                             <constraint firstItem="GBj-4O-Whc" firstAttribute="bottom" secondItem="Yf6-WU-CVx" secondAttribute="bottom" constant="15" id="3bn-1I-b3Y"/>
+                            <constraint firstItem="wLb-Lk-NqB" firstAttribute="leading" secondItem="Yf6-WU-CVx" secondAttribute="trailing" id="54Q-VZ-YGy"/>
                             <constraint firstItem="BgI-fb-Vqi" firstAttribute="trailing" secondItem="E6c-py-dvH" secondAttribute="trailing" constant="-15" id="6c1-k7-y99"/>
                             <constraint firstAttribute="bottom" secondItem="E6c-py-dvH" secondAttribute="bottom" id="6h6-BI-mhL"/>
                             <constraint firstItem="E6c-py-dvH" firstAttribute="top" secondItem="RLh-bf-1c3" secondAttribute="top" id="7gH-DS-Crg"/>
                             <constraint firstItem="E6c-py-dvH" firstAttribute="leading" secondItem="GBj-4O-Whc" secondAttribute="leading" id="8nh-ZQ-AuM"/>
                             <constraint firstItem="9e0-zv-RiN" firstAttribute="top" secondItem="E6c-py-dvH" secondAttribute="top" constant="15" id="FTS-AH-WBr"/>
                             <constraint firstItem="BgI-fb-Vqi" firstAttribute="leading" secondItem="9e0-zv-RiN" secondAttribute="trailing" constant="15" id="MwJ-LS-qaQ"/>
+                            <constraint firstItem="SiG-YX-rZN" firstAttribute="leading" secondItem="FDz-qT-5Mj" secondAttribute="leading" constant="12" id="Oxc-zr-pBU"/>
                             <constraint firstItem="SuF-Os-zmb" firstAttribute="top" secondItem="E6c-py-dvH" secondAttribute="top" id="UMK-or-VVf"/>
                             <constraint firstItem="BgI-fb-Vqi" firstAttribute="top" secondItem="GBj-4O-Whc" secondAttribute="top" constant="20" id="V7S-nn-Lcz"/>
+                            <constraint firstItem="SiG-YX-rZN" firstAttribute="width" secondItem="FDz-qT-5Mj" secondAttribute="width" multiplier="0.5" id="Vil-kw-Sm0"/>
+                            <constraint firstItem="wLb-Lk-NqB" firstAttribute="centerY" secondItem="Yf6-WU-CVx" secondAttribute="centerY" id="YGx-9v-gLJ"/>
+                            <constraint firstItem="SiG-YX-rZN" firstAttribute="height" secondItem="FDz-qT-5Mj" secondAttribute="height" id="YvC-Zp-75A"/>
+                            <constraint firstItem="FDz-qT-5Mj" firstAttribute="top" secondItem="SiG-YX-rZN" secondAttribute="bottom" constant="12" id="eAj-UZ-hed"/>
                             <constraint firstItem="GBj-4O-Whc" firstAttribute="bottom" secondItem="FDz-qT-5Mj" secondAttribute="bottom" constant="15" id="eum-Td-wmw"/>
                             <constraint firstItem="9e0-zv-RiN" firstAttribute="leading" secondItem="E6c-py-dvH" secondAttribute="leading" constant="15" id="iIf-WZ-kZj"/>
-                            <constraint firstItem="Yf6-WU-CVx" firstAttribute="leading" secondItem="FDz-qT-5Mj" secondAttribute="trailing" constant="30" id="iaw-eF-9bI"/>
+                            <constraint firstItem="Yf6-WU-CVx" firstAttribute="leading" secondItem="FDz-qT-5Mj" secondAttribute="trailing" id="iaw-eF-9bI"/>
                             <constraint firstItem="GBj-4O-Whc" firstAttribute="trailing" secondItem="E6c-py-dvH" secondAttribute="trailing" id="lHd-lf-g1u"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="GBj-4O-Whc"/>
