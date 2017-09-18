@@ -65,6 +65,7 @@ class VirtualObjectManager {
             for pointNode in self.pointNodes {
                 pointNode.setNewHeight(newHeight: newHeight)
             }
+            //ed- sets the height in SavedObjectManager
             SavedObjectManager.set(toHeight: Float(newHeight) )
         }
     }
@@ -134,7 +135,7 @@ class VirtualObjectManager {
             //ed- this applies a matrix transform into position relative to world.
 			let planeHitTestPosition = result.worldTransform.translation
 			let planeAnchor = result.anchor
-            //this should give a matrix transform into a relative position within the app
+            //ed- this should give a matrix transform into a relative position within the app
 			let hitTestPositionLocal = result.localTransform.translation
             SavedObjectManager.add(hitTestPositionLocal)
             

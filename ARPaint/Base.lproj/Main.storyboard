@@ -22,10 +22,9 @@
                                 <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                             </sceneKitView>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="FDz-qT-5Mj" userLabel="Draw Button">
-                                <rect key="frame" x="7" y="604" width="120" height="48"/>
+                                <rect key="frame" x="12" y="604" width="121" height="48"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="48" id="L76-M7-2Ss"/>
-                                    <constraint firstAttribute="width" constant="120" id="q6S-Bh-mXP"/>
                                 </constraints>
                                 <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="18"/>
                                 <state key="normal" title=" Draw" image="shutter">
@@ -61,22 +60,22 @@
                                 </connections>
                             </button>
                             <visualEffectView opaque="NO" contentMode="scaleToFill" verticalHuggingPriority="1000" verticalCompressionResistancePriority="100" translatesAutoresizingMaskIntoConstraints="NO" id="9e0-zv-RiN" userLabel="Message Panel">
-                                <rect key="frame" x="15" y="15" width="310" height="36"/>
+                                <rect key="frame" x="15" y="15" width="310" height="20"/>
                                 <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" id="AVp-TR-4Nw">
-                                    <rect key="frame" x="0.0" y="0.0" width="310" height="36"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="310" height="20"/>
                                     <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                     <subviews>
                                         <visualEffectView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="R4B-nn-Jhq">
-                                            <rect key="frame" x="0.0" y="0.0" width="310" height="36"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="310" height="20"/>
                                             <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" id="CFm-yP-zdd">
-                                                <rect key="frame" x="0.0" y="0.0" width="310" height="36"/>
+                                                <rect key="frame" x="0.0" y="0.0" width="310" height="20"/>
                                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                                 <subviews>
                                                     <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="GT6-ZJ-can">
-                                                        <rect key="frame" x="0.0" y="10" width="310" height="16"/>
+                                                        <rect key="frame" x="0.0" y="10" width="72" height="0.0"/>
                                                         <subviews>
                                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" verticalCompressionResistancePriority="751" text="Tracking status" lineBreakMode="tailTruncation" numberOfLines="3" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Mqz-65-rAs" userLabel="Messages label">
-                                                                <rect key="frame" x="0.0" y="0.0" width="310" height="16"/>
+                                                                <rect key="frame" x="0.0" y="0.0" width="72" height="0.0"/>
                                                                 <fontDescription key="fontDescription" style="UICTFontTextStyleFootnote"/>
                                                                 <nil key="textColor"/>
                                                                 <color key="highlightedColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -107,10 +106,9 @@
                                 <blurEffect style="light"/>
                             </visualEffectView>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Yf6-WU-CVx" userLabel="3D Button">
-                                <rect key="frame" x="127" y="604" width="120" height="48"/>
+                                <rect key="frame" x="127.5" y="604" width="120.5" height="48"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="48" id="dES-Xv-vf4"/>
-                                    <constraint firstAttribute="width" constant="120" id="tF1-4K-EQ2"/>
                                 </constraints>
                                 <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="18"/>
                                 <state key="normal" title=" 3D!" image="shutter">
@@ -122,10 +120,9 @@
                                     <action selector="threeDMagicAction:" destination="BV1-FR-VrT" eventType="touchUpInside" id="pmd-MP-Yuj"/>
                                 </connections>
                             </button>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="wLb-Lk-NqB" userLabel="Draw Button">
-                                <rect key="frame" x="247" y="604" width="120" height="48"/>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="wLb-Lk-NqB" userLabel="Place Button">
+                                <rect key="frame" x="242.5" y="604" width="120.5" height="48"/>
                                 <constraints>
-                                    <constraint firstAttribute="width" constant="120" id="1Dx-pS-qi1"/>
                                     <constraint firstAttribute="height" constant="48" id="STV-oV-SeI"/>
                                 </constraints>
                                 <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="18"/>
@@ -136,38 +133,42 @@
                                 <state key="selected" image="shutterPressed"/>
                                 <state key="highlighted" image="shutterPressed"/>
                                 <connections>
-                                    <action selector="drawAction" destination="BV1-FR-VrT" eventType="touchUpInside" id="fo4-uU-n3s"/>
+                                    <action selector="placeAction:" destination="BV1-FR-VrT" eventType="touchUpInside" id="7Df-4c-Z3G"/>
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="SiG-YX-rZN">
-                                <rect key="frame" x="19" y="544" width="60" height="48"/>
+                                <rect key="frame" x="15" y="544" width="60.5" height="48"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <state key="normal" title="Save!"/>
                             </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
-                            <constraint firstItem="FDz-qT-5Mj" firstAttribute="leading" secondItem="GBj-4O-Whc" secondAttribute="leading" constant="7" id="05U-lG-lP4"/>
+                            <constraint firstItem="FDz-qT-5Mj" firstAttribute="leading" secondItem="GBj-4O-Whc" secondAttribute="leading" constant="12" id="05U-lG-lP4"/>
                             <constraint firstItem="SuF-Os-zmb" firstAttribute="trailing" secondItem="E6c-py-dvH" secondAttribute="trailing" id="35g-18-nn3"/>
+                            <constraint firstItem="wLb-Lk-NqB" firstAttribute="width" secondItem="FDz-qT-5Mj" secondAttribute="width" id="3bU-rR-BFb"/>
                             <constraint firstItem="GBj-4O-Whc" firstAttribute="bottom" secondItem="Yf6-WU-CVx" secondAttribute="bottom" constant="15" id="3bn-1I-b3Y"/>
-                            <constraint firstItem="wLb-Lk-NqB" firstAttribute="leading" secondItem="Yf6-WU-CVx" secondAttribute="trailing" id="54Q-VZ-YGy"/>
                             <constraint firstItem="BgI-fb-Vqi" firstAttribute="trailing" secondItem="E6c-py-dvH" secondAttribute="trailing" constant="-15" id="6c1-k7-y99"/>
                             <constraint firstAttribute="bottom" secondItem="E6c-py-dvH" secondAttribute="bottom" id="6h6-BI-mhL"/>
                             <constraint firstItem="E6c-py-dvH" firstAttribute="top" secondItem="RLh-bf-1c3" secondAttribute="top" id="7gH-DS-Crg"/>
                             <constraint firstItem="E6c-py-dvH" firstAttribute="leading" secondItem="GBj-4O-Whc" secondAttribute="leading" id="8nh-ZQ-AuM"/>
+                            <constraint firstItem="Yf6-WU-CVx" firstAttribute="width" secondItem="FDz-qT-5Mj" secondAttribute="width" id="C9D-oi-aQh"/>
                             <constraint firstItem="9e0-zv-RiN" firstAttribute="top" secondItem="E6c-py-dvH" secondAttribute="top" constant="15" id="FTS-AH-WBr"/>
+                            <constraint firstItem="Yf6-WU-CVx" firstAttribute="centerX" secondItem="E6c-py-dvH" secondAttribute="centerX" id="K3q-Nr-eBU"/>
                             <constraint firstItem="BgI-fb-Vqi" firstAttribute="leading" secondItem="9e0-zv-RiN" secondAttribute="trailing" constant="15" id="MwJ-LS-qaQ"/>
-                            <constraint firstItem="SiG-YX-rZN" firstAttribute="leading" secondItem="FDz-qT-5Mj" secondAttribute="leading" constant="12" id="Oxc-zr-pBU"/>
+                            <constraint firstItem="SiG-YX-rZN" firstAttribute="leading" secondItem="FDz-qT-5Mj" secondAttribute="leading" constant="3" id="Oxc-zr-pBU"/>
                             <constraint firstItem="SuF-Os-zmb" firstAttribute="top" secondItem="E6c-py-dvH" secondAttribute="top" id="UMK-or-VVf"/>
+                            <constraint firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="SiG-YX-rZN" secondAttribute="trailing" constant="20" symbolic="YES" id="UVc-AU-F7a"/>
                             <constraint firstItem="BgI-fb-Vqi" firstAttribute="top" secondItem="GBj-4O-Whc" secondAttribute="top" constant="20" id="V7S-nn-Lcz"/>
                             <constraint firstItem="SiG-YX-rZN" firstAttribute="width" secondItem="FDz-qT-5Mj" secondAttribute="width" multiplier="0.5" id="Vil-kw-Sm0"/>
+                            <constraint firstItem="FDz-qT-5Mj" firstAttribute="width" secondItem="E6c-py-dvH" secondAttribute="width" multiplier="0.33" constant="-3" id="XSI-mh-CQI"/>
                             <constraint firstItem="wLb-Lk-NqB" firstAttribute="centerY" secondItem="Yf6-WU-CVx" secondAttribute="centerY" id="YGx-9v-gLJ"/>
                             <constraint firstItem="SiG-YX-rZN" firstAttribute="height" secondItem="FDz-qT-5Mj" secondAttribute="height" id="YvC-Zp-75A"/>
                             <constraint firstItem="FDz-qT-5Mj" firstAttribute="top" secondItem="SiG-YX-rZN" secondAttribute="bottom" constant="12" id="eAj-UZ-hed"/>
                             <constraint firstItem="GBj-4O-Whc" firstAttribute="bottom" secondItem="FDz-qT-5Mj" secondAttribute="bottom" constant="15" id="eum-Td-wmw"/>
                             <constraint firstItem="9e0-zv-RiN" firstAttribute="leading" secondItem="E6c-py-dvH" secondAttribute="leading" constant="15" id="iIf-WZ-kZj"/>
-                            <constraint firstItem="Yf6-WU-CVx" firstAttribute="leading" secondItem="FDz-qT-5Mj" secondAttribute="trailing" id="iaw-eF-9bI"/>
                             <constraint firstItem="GBj-4O-Whc" firstAttribute="trailing" secondItem="E6c-py-dvH" secondAttribute="trailing" id="lHd-lf-g1u"/>
+                            <constraint firstItem="wLb-Lk-NqB" firstAttribute="trailing" secondItem="E6c-py-dvH" secondAttribute="trailing" constant="-12" id="u5m-O1-E1k"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="GBj-4O-Whc"/>
                     </view>
@@ -175,7 +176,9 @@
                         <outlet property="drawButton" destination="FDz-qT-5Mj" id="iGR-n3-bSc"/>
                         <outlet property="messageLabel" destination="Mqz-65-rAs" id="G3a-qn-5g9"/>
                         <outlet property="messagePanel" destination="9e0-zv-RiN" id="pKf-hp-Dvx"/>
+                        <outlet property="placeButton" destination="wLb-Lk-NqB" id="nrK-GN-aU9"/>
                         <outlet property="restartExperienceButton" destination="BgI-fb-Vqi" id="Yfh-W4-qlO"/>
+                        <outlet property="saveButton" destination="SiG-YX-rZN" id="9Pt-KT-eWh"/>
                         <outlet property="sceneView" destination="E6c-py-dvH" id="Gr4-Uw-Z4A"/>
                         <outlet property="threeDMagicButton" destination="Yf6-WU-CVx" id="r25-7i-VdB"/>
                     </connections>

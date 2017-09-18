@@ -54,7 +54,7 @@ class ViewController: UIViewController, ARSCNViewDelegate {
         in3DMode = false
         threeDMagicButton.isSelected = in3DMode
     }
-    
+
     @IBOutlet weak var threeDMagicButton: UIButton!
     @IBAction func threeDMagicAction(_ button: UIButton) {
         threeDMagicButton.isSelected = !threeDMagicButton.isSelected
@@ -64,6 +64,10 @@ class ViewController: UIViewController, ARSCNViewDelegate {
         drawButton.isSelected = inDrawMode
         trackImageInitialOrigin = nil
     }
+    
+    //ed- see ViewController+Actions.swift for the associated IBActions
+    @IBOutlet weak var placeButton: UIButton!
+    @IBOutlet weak var saveButton: UIButton!
     
     // MARK: - Queues
     
