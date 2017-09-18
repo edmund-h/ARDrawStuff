@@ -65,6 +65,7 @@ class VirtualObjectManager {
             for pointNode in self.pointNodes {
                 pointNode.setNewHeight(newHeight: newHeight)
             }
+            SavedObjectManager.set(toHeight: Float(newHeight) )
         }
     }
     
@@ -97,7 +98,7 @@ class VirtualObjectManager {
 			
 			// Move the object onto the plane if it is near it (within 5 centimeters).
 			let verticalAllowance: Float = 0.05
-			let epsilon: Float = 0.001 // Do not bother updating if the different is less than a mm.
+			let epsilon: Float = 0.001 // Do not bother updating if the difference is less than a mm.
 			let distanceToPlane = abs(objectPos.y)
 			if distanceToPlane > epsilon && distanceToPlane < verticalAllowance {
 				delegate?.virtualObjectManager(self, didMoveObjectOntoNearbyPlane: object)
@@ -115,7 +116,13 @@ class VirtualObjectManager {
 	                                     in sceneView: ARSCNView,
 	                                     objectPos: float3?,
 	                                     infinitePlane: Bool = false) -> (position: float3?, planeAnchor: ARPlaneAnchor?, hitAPlane: Bool) {
-		
+        //MARK: WorldPosition-
+        //ed- Here the drawn object is given a permanent relative position.
+        //position (CGPoint): position of the object on the screen
+        //sceneView: the view giving the object info
+        //objectPos: not used in the app- always passed in as nil
+        //           this property would be used to add an obj into the world...
+        
 		//let dragOnInfinitePlanesEnabled = UserDefaults.standard.bool(for: .dragOnInfinitePlanes)
 		
 		// -------------------------------------------------------------------------------
@@ -124,10 +131,13 @@ class VirtualObjectManager {
 		
 		let planeHitTestResults = sceneView.hitTest(position, types: .existingPlaneUsingExtent)
 		if let result = planeHitTestResults.first {
-			
+            //ed- this applies a matrix transform into position relative to world.
 			let planeHitTestPosition = result.worldTransform.translation
 			let planeAnchor = result.anchor
-			
+            //this should give a matrix transform into a relative position within the app
+			let hitTestPositionLocal = result.localTransform.translation
+            SavedObjectManager.add(hitTestPositionLocal)
+            
 			// Return immediately - this is the best possible outcome.
 			return (planeHitTestPosition, planeAnchor as? ARPlaneAnchor, true)
 		}
