@@ -89,6 +89,7 @@ class ViewController: UIViewController, ARSCNViewDelegate {
         
         let tapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(tapAction))
         view.addGestureRecognizer(tapGestureRecognizer)
+        saveButton.layer.cornerRadius = 10
     }
 
 	override func viewDidAppear(_ animated: Bool) {
