@@ -45,58 +45,33 @@ class ViewController: UIViewController, ARSCNViewDelegate {
     @IBOutlet weak var messageLabel: UILabel!
     @IBOutlet weak var restartExperienceButton: UIButton!
     
-    //ed- buttons now visually set one another to off, fixing a misleading ui bug
     @IBOutlet weak var drawButton: UIButton!
     @IBAction func drawAction() {
-        drawButton.isSelected = !drawButton.isSelected
-        inDrawMode = drawButton.isSelected
-        // ed- added these two lines:
-        in3DMode = false
-        threeDMagicButton.isSelected = in3DMode
+        //ed- see enum in ViewController + actions
+        if !drawButton.isSelected {
+            changeMode(to: .draw)
+        }
+        else {
+            changeMode(to: nil)
+        }
     }
 
     @IBOutlet weak var threeDMagicButton: UIButton!
     @IBAction func threeDMagicAction(_ button: UIButton) {
-        threeDMagicButton.isSelected = !threeDMagicButton.isSelected
-        in3DMode = threeDMagicButton.isSelected
-        inDrawMode = false
-        // ed- added these two lines:
-        drawButton.isSelected = inDrawMode
-        trackImageInitialOrigin = nil
+        //ed- see enum in ViewController + actions
+        if !drawButton.isSelected {
+            changeMode(to: .threeD)
+        }
+        else {
+            changeMode(to: nil)
+        }
     }
     
     //ed- see ViewController+Actions.swift for the associated IBActions
     @IBOutlet weak var placeButton: UIButton!
     @IBOutlet weak var saveButton: UIButton!
     
-    
-    var inDrawMode = false {
-        didSet {
-            drawButton.isSelected = inDrawMode
-            threeDMagicButton.isSelected = !inDrawMode
-            threeDMagicButton.isEnabled = !inDrawMode
-            placeButton.isSelected = !inDrawMode
-            placeButton.isEnabled = !inDrawMode
-        }
-    }
-    var in3DMode = false {
-        didSet {
-            threeDMagicButton.isSelected = in3DMode
-            placeButton.isSelected = !in3DMode
-            placeButton.isEnabled = !in3DMode
-            drawButton.isSelected = !in3DMode
-            drawButton.isEnabled = !in3DMode
-        }
-    }
-    var inPlaceMode = false {
-        didSet {
-            placeButton.isSelected = inPlaceMode
-            threeDMagicButton.isSelected = !inPlaceMode
-            threeDMagicButton.isEnabled = !inPlaceMode
-            drawButton.isSelected = !inPlaceMode
-            drawButton.isEnabled = !inPlaceMode
-        }
-    }
+    var mode: Mode? = nil
     
     // MARK: - Queues
     
@@ -211,7 +186,7 @@ class ViewController: UIViewController, ARSCNViewDelegate {
             self.virtualPenTip?.simdPosition = lastFingerWorldPos
             
             // Draw new point
-            if (self.inDrawMode && !self.virtualObjectManager.pointNodeExistAt(pos: lastFingerWorldPos)){
+            if (mode == .draw && !self.virtualObjectManager.pointNodeExistAt(pos: lastFingerWorldPos)){
                 let newPoint = PointNode()
                 self.sceneView.scene.rootNode.addChildNode(newPoint)
                 self.virtualObjectManager.loadVirtualObject(newPoint, to: lastFingerWorldPos)
@@ -220,7 +195,7 @@ class ViewController: UIViewController, ARSCNViewDelegate {
             }
             
             // Convert drawing to 3D
-            if (self.in3DMode ) {
+            if (mode == .threeD ) {
                 if self.trackImageInitialOrigin != nil {
                     DispatchQueue.main.async {
                         let newH = 0.4 *  (self.trackImageInitialOrigin!.y - self.trackImageBoundingBox!.origin.y) / self.sceneView.frame.height
@@ -346,11 +321,8 @@ class ViewController: UIViewController, ARSCNViewDelegate {
 		                            messageType: .planeEstimation)
         
         trackImageInitialOrigin = nil
-        inDrawMode = false
-        in3DMode = false
+        changeMode(to: nil)
         lastFingerWorldPos = nil
-        drawButton.isSelected = false
-        threeDMagicButton.isSelected = false
         self.virtualPenTip?.isHidden = true
         
 	}

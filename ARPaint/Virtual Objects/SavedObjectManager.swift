@@ -14,9 +14,11 @@ class SavedObjectManager {
     static var height: Float = 0.00001
     
     class func save() {
+        //ed- current object vectors are saved in user defaults
         var currentDict: [String:[String:Float]] = [:]
         for index in current.indices {
             let indexString = String(index)
+            //ed- parameters are saved by string key
             let float3Data: [String:Float] = [
                 "x" : current[index].x,
                 "y" : current[index].y,
@@ -29,6 +31,7 @@ class SavedObjectManager {
     }
     
     class func load()-> Bool {
+        //ed- objects and their height are loaded from user defaults.
         var temp: [float3] = []
         var tempHeight: Float = 0.00001
         if let objectDict = UserDefaults.standard.object(forKey: "SavedObject") as? [String:Any]{
@@ -56,6 +59,7 @@ class SavedObjectManager {
         return false
     }
     
+    // MARK: Helper functions
     class func positions()-> [float3] {
         let toReturn: [float3]  = current
         clearCurrent()
