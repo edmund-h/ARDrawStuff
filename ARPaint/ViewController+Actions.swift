@@ -53,6 +53,7 @@ extension ViewController {
     @IBAction func placeAction(_ button: UIButton!) {
         if self.mode == .place {
             print("select pressed: \(virtualObjectManager.pointNodes.count) nodes")
+            let cgHeight = CGFloat(SavedObjectManager.height)
             let places = SavedObjectManager.positions()
             //ed- get focus square's center
             guard let center = focusSquare?.lastPositionOnPlane, places.count > 0 else {
@@ -70,6 +71,10 @@ extension ViewController {
                 self.sceneView.scene.rootNode.addChildNode(newPoint)
                 self.virtualObjectManager.loadVirtualObject(newPoint, to: location)
             }
+            DispatchQueue.main.async {
+                print("set to \(cgHeight) height")
+                self.virtualObjectManager.setNewHeight(newHeight: cgHeight)
+            }
             focusSquare?.hide()
             //ed- setting mode to nil deselects all buttons
             changeMode(to: nil)
@@ -78,6 +83,7 @@ extension ViewController {
             //ed- sets other buttons to deselected state and enables focus square
             changeMode(to: .place)
             if SavedObjectManager.load() {
+                print("loaded height \(SavedObjectManager.height)")
                 focusSquare?.unhide()
                 textManager.showMessage("Choose a location to display the saved object, then press Place again")
             }else {

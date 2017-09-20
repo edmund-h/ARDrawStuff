@@ -42,7 +42,6 @@ class SavedObjectManager {
                     let valueZ = value["z"],
                     let valueHeight = value["height"]{
                     let position = float3(valueX, valueY, valueZ)
-                    print("loaded \(position.debugDescription)")
                     tempHeight = valueHeight
                     temp.append(position)
                 }else{
