@@ -186,6 +186,8 @@ class ViewController: UIViewController, ARSCNViewDelegate {
                 let newPoint = PointNode()
                 self.sceneView.scene.rootNode.addChildNode(newPoint)
                 self.virtualObjectManager.loadVirtualObject(newPoint, to: lastFingerWorldPos)
+                SavedObjectManager.add(lastFingerWorldPos)
+                print("added position")
             }
             
             // Convert drawing to 3D
@@ -447,14 +449,11 @@ class ViewController: UIViewController, ARSCNViewDelegate {
             
             // Get the projection if the location of the tracked image from image space to the nearest detected plane
             if let trackImageOrigin = self.trackImageBoundingBox?.origin {
-                (self.lastFingerWorldPos, _, _) = self.virtualObjectManager.worldPositionFromScreenPosition(CGPoint(x: trackImageOrigin.x - 20.0, y: trackImageOrigin.y + 40.0), in: self.sceneView, objectPos: nil, infinitePlane: false)
+                self.lastFingerWorldPos = self.virtualObjectManager.worldPositionFromScreenPosition(CGPoint(x: trackImageOrigin.x - 20.0, y: trackImageOrigin.y + 40.0), in: self.sceneView, objectPos: nil, infinitePlane: false).position
+                
             }
             
         }
     }
-    
-    
-    
-    
     
 }

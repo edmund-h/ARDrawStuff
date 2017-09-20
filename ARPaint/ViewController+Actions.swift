@@ -48,16 +48,28 @@ extension ViewController {
     
     //ed- disables the other two buttons and gets location to place the saved obj
     @IBAction func placeAction(_ button: UIButton!) {
-        if SavedObjectManager.load() {
-            textManager.showMessage("Choose a location to display the saved object, then press Place again")
-            placeButton.isSelected = !placeButton.isSelected
-            in3DMode = false
-            threeDMagicButton.isSelected = in3DMode
-            inDrawMode = false
-            drawButton.isSelected = inDrawMode
-            
-        } else {
-            textManager.showMessage("Could not load object data!")
+        if placeButton.isSelected == false {
+            if SavedObjectManager.load() {
+                textManager.showMessage("Choose a location to display the saved object, then press Place again")
+                placeButton.isSelected = true
+                in3DMode = false
+                threeDMagicButton.isSelected = in3DMode
+                inDrawMode = false
+                drawButton.isSelected = inDrawMode
+            }else {
+                textManager.showMessage("Could not load object data!")
+            }
+        } else if placeButton.isSelected {
+            placeButton.isSelected = false
+            print("select pressed: \(virtualObjectManager.pointNodes.count) nodes")
+            let places = SavedObjectManager.positions()
+            places.forEach{ point in
+                guard !virtualObjectManager.pointNodeExistAt(pos: point) else {return}
+                let newPoint = PointNode()
+                self.sceneView.scene.rootNode.addChildNode(newPoint)
+                self.virtualObjectManager.loadVirtualObject(newPoint, to: point)
+            }
+            print("objects loaded: \(virtualObjectManager.pointNodes.count) nodes")
         }
     }
     

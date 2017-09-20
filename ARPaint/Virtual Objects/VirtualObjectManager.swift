@@ -112,7 +112,26 @@ class VirtualObjectManager {
 			}
 		}
 	}
-	
+    
+    func localPositionFromScreenPosition(_ position: CGPoint,
+                                         in sceneView: ARSCNView,
+                                         objectPos: float3?,
+                                         infinitePlane: Bool = false) -> (position: float3?, planeAnchor: ARPlaneAnchor?, hitAPlane: Bool) {
+        // MARK: Local Position
+        // ed- I created this in order to get local positions to save an object's spatial data without reference to the world, so that it can be inserted into another world at a different place later.
+        
+        let planeHitTestResults = sceneView.hitTest(position, types: .existingPlaneUsingExtent)
+        if let result = planeHitTestResults.first {
+            //ed- this applies a matrix transform into local position.
+            let planeHitTestPosition = result.localTransform.translation
+            let planeAnchor = result.anchor
+            
+            return (planeHitTestPosition, planeAnchor as? ARPlaneAnchor, true)
+        }
+        //ed- Osama commented out the other tests, so I did not include them.
+        return (nil, nil, false)
+    }
+    
 	func worldPositionFromScreenPosition(_ position: CGPoint,
 	                                     in sceneView: ARSCNView,
 	                                     objectPos: float3?,
@@ -135,9 +154,6 @@ class VirtualObjectManager {
             //ed- this applies a matrix transform into position relative to world.
 			let planeHitTestPosition = result.worldTransform.translation
 			let planeAnchor = result.anchor
-            //ed- this should give a matrix transform into a relative position within the app
-			let hitTestPositionLocal = result.localTransform.translation
-            SavedObjectManager.add(hitTestPositionLocal)
             
 			// Return immediately - this is the best possible outcome.
 			return (planeHitTestPosition, planeAnchor as? ARPlaneAnchor, true)

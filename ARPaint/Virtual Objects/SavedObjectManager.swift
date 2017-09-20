@@ -10,19 +10,20 @@ import Foundation
 import ARKit
 
 class SavedObjectManager {
-    private static var current: [float3] = []
-    private static var height: Float = 0.00001
+    static var current: [float3] = []
+    static var height: Float = 0.00001
     
     class func save() {
-        var currentDict: [Int:[String:Float]] = [:]
+        var currentDict: [String:[String:Float]] = [:]
         for index in current.indices {
+            let indexString = String(index)
             let float3Data: [String:Float] = [
                 "x" : current[index].x,
                 "y" : current[index].y,
                 "z" : current[index].z,
                 "height" : height
             ]
-            currentDict[index] = float3Data
+            currentDict[indexString] = float3Data
         }
         UserDefaults.standard.setValue(currentDict, forKeyPath: "SavedObject")
     }
@@ -30,9 +31,9 @@ class SavedObjectManager {
     class func load()-> Bool {
         var temp: [float3] = []
         var tempHeight: Float = 0.00001
-        if let objectDict = UserDefaults.standard.object(forKey: "SavedObject") as? [Int:Any]{
+        if let objectDict = UserDefaults.standard.object(forKey: "SavedObject") as? [String:Any]{
             for index in Array(objectDict.keys).indices {
-                if let value = objectDict[index] as? [String:Float],
+                if let value = objectDict["\(index)"] as? [String:Float],
                     let valueX = value["x"],
                     let valueY = value["y"],
                     let valueZ = value["z"],
@@ -53,6 +54,12 @@ class SavedObjectManager {
         }
         print("could not get object data")
         return false
+    }
+    
+    class func positions()-> [float3] {
+        let toReturn: [float3]  = current
+        clearCurrent()
+        return toReturn
     }
     
     class func add(_ position: float3) {
