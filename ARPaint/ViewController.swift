@@ -69,6 +69,35 @@ class ViewController: UIViewController, ARSCNViewDelegate {
     @IBOutlet weak var placeButton: UIButton!
     @IBOutlet weak var saveButton: UIButton!
     
+    
+    var inDrawMode = false {
+        didSet {
+            drawButton.isSelected = inDrawMode
+            threeDMagicButton.isSelected = !inDrawMode
+            threeDMagicButton.isEnabled = !inDrawMode
+            placeButton.isSelected = !inDrawMode
+            placeButton.isEnabled = !inDrawMode
+        }
+    }
+    var in3DMode = false {
+        didSet {
+            threeDMagicButton.isSelected = in3DMode
+            placeButton.isSelected = !in3DMode
+            placeButton.isEnabled = !in3DMode
+            drawButton.isSelected = !in3DMode
+            drawButton.isEnabled = !in3DMode
+        }
+    }
+    var inPlaceMode = false {
+        didSet {
+            placeButton.isSelected = inPlaceMode
+            threeDMagicButton.isSelected = !inPlaceMode
+            threeDMagicButton.isEnabled = !inPlaceMode
+            drawButton.isSelected = !inPlaceMode
+            drawButton.isEnabled = !inPlaceMode
+        }
+    }
+    
     // MARK: - Queues
     
     static let serialQueue = DispatchQueue(label: "com.apple.arkitexample.serialSceneKitQueue")
@@ -383,8 +412,6 @@ class ViewController: UIViewController, ARSCNViewDelegate {
     
     // MARK: - ARPaint methods
     
-    var inDrawMode = false
-    var in3DMode = false
     var lastFingerWorldPos: float3?
     
     var virtualPenTip: PointNode?

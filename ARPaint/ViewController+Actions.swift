@@ -50,6 +50,7 @@ extension ViewController {
     @IBAction func placeAction(_ button: UIButton!) {
         if placeButton.isSelected == false {
             if SavedObjectManager.load() {
+                focusSquare?.unhide()
                 textManager.showMessage("Choose a location to display the saved object, then press Place again")
                 placeButton.isSelected = true
                 in3DMode = false
@@ -63,12 +64,16 @@ extension ViewController {
             placeButton.isSelected = false
             print("select pressed: \(virtualObjectManager.pointNodes.count) nodes")
             let places = SavedObjectManager.positions()
+            guard let center = focusSquare?.lastPositionOnPlane, places.count > 0 else {return}
+            let delta = center - places[0]
             places.forEach{ point in
-                guard !virtualObjectManager.pointNodeExistAt(pos: point) else {return}
+                let location = point + delta
+                guard !virtualObjectManager.pointNodeExistAt(pos: location) else {return}
                 let newPoint = PointNode()
                 self.sceneView.scene.rootNode.addChildNode(newPoint)
-                self.virtualObjectManager.loadVirtualObject(newPoint, to: point)
+                self.virtualObjectManager.loadVirtualObject(newPoint, to: location)
             }
+            focusSquare?.hide()
             print("objects loaded: \(virtualObjectManager.pointNodes.count) nodes")
         }
     }
