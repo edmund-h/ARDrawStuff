@@ -52,7 +52,6 @@ extension ViewController {
     //ed- disables the other two buttons and gets location to place the saved obj
     @IBAction func placeAction(_ button: UIButton!) {
         if self.mode == .place {
-            print("select pressed: \(virtualObjectManager.pointNodes.count) nodes")
             let cgHeight = CGFloat(SavedObjectManager.height)
             let places = SavedObjectManager.positions()
             //ed- get focus square's center
@@ -72,18 +71,14 @@ extension ViewController {
                 self.virtualObjectManager.loadVirtualObject(newPoint, to: location)
             }
             DispatchQueue.main.async {
-                print("set to \(cgHeight) height")
                 self.virtualObjectManager.setNewHeight(newHeight: cgHeight)
             }
             focusSquare?.hide()
             //ed- setting mode to nil deselects all buttons
-            changeMode(to: nil)
-            print("objects loaded: \(virtualObjectManager.pointNodes.count) nodes")
-        } else {
+            changeMode(to: nil)        } else {
             //ed- sets other buttons to deselected state and enables focus square
             changeMode(to: .place)
             if SavedObjectManager.load() {
-                print("loaded height \(SavedObjectManager.height)")
                 focusSquare?.unhide()
                 textManager.showMessage("Choose a location to display the saved object, then press Place again")
             }else {
@@ -110,7 +105,6 @@ extension ViewController {
                 btnArray[index]?.isSelected = false
             }
         }
-        print("mode \(String(describing: mode?.rawValue))")
         self.mode = mode
     }   //ed- this fixes an issue where multiple modes could be active and the button could unalign with the mode it was supposed to represend
     
