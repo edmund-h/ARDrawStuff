@@ -59,7 +59,7 @@ class ViewController: UIViewController, ARSCNViewDelegate {
     @IBOutlet weak var threeDMagicButton: UIButton!
     @IBAction func threeDMagicAction(_ button: UIButton) {
         //ed- see enum in ViewController + actions
-        if !drawButton.isSelected {
+        if !threeDMagicButton.isSelected {
             changeMode(to: .threeD)
         }
         else {

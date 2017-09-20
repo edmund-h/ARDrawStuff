@@ -55,7 +55,10 @@ extension ViewController {
             print("select pressed: \(virtualObjectManager.pointNodes.count) nodes")
             let places = SavedObjectManager.positions()
             //ed- get focus square's center
-            guard let center = focusSquare?.lastPositionOnPlane, places.count > 0 else {return}
+            guard let center = focusSquare?.lastPositionOnPlane, places.count > 0 else {
+                changeMode(to: nil)
+                return
+            }
             //ed- get delta needed to translate object locations
             let delta = center - places[0]
             places.forEach{ point in
@@ -69,7 +72,7 @@ extension ViewController {
             }
             focusSquare?.hide()
             //ed- setting mode to nil deselects all buttons
-            mode = nil
+            changeMode(to: nil)
             print("objects loaded: \(virtualObjectManager.pointNodes.count) nodes")
         } else {
             //ed- sets other buttons to deselected state and enables focus square
@@ -101,6 +104,7 @@ extension ViewController {
                 btnArray[index]?.isSelected = false
             }
         }
+        print("mode \(String(describing: mode?.rawValue))")
         self.mode = mode
     }   //ed- this fixes an issue where multiple modes could be active and the button could unalign with the mode it was supposed to represend
     
