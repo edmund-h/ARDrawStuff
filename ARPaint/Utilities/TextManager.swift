@@ -30,6 +30,10 @@ extension ARCamera.TrackingState {
                 return "TRACKING LIMITED\nNot enough surface detail"
             case .initializing:
                 return "Initializing AR Session"
+            case .insufficientFeatures:
+                return "Insufficient Camera Features, time to get a new phone :["
+            default:
+                return "Some unanticipated issue! ?__?"
             }
         }
     }
